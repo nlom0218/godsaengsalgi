@@ -28,7 +28,7 @@ export function HeaderCommand() {
   }, []);
 
   return (
-    <>
+    <div className="ml-auto">
       <div>
         <p className="text-xs text-muted-foreground">페이지 검색 ⌘P</p>
       </div>
@@ -60,6 +60,6 @@ export function HeaderCommand() {
           )}
         </CommandList>
       </CommandDialog>
-    </>
+    </div>
   );
 }

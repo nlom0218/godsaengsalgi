@@ -6,6 +6,7 @@ import { HeaderCommand } from './header-command/header-command';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { CATEGORY_STRUCTURE } from '@/constants/category';
+import { UserDropdown } from './user-dropdown/user-dropdown';
 
 export function Header() {
   const pathname = usePathname();
@@ -13,7 +14,8 @@ export function Header() {
 
   return (
     <div className="flex h-16 items-center px-4 border-b">
-      <div className="w-full flex justify-between items-center">
+      <div className="w-full flex items-center gap-8">
+        <UserDropdown />
         <nav className="flex items-center space-x-4 lg:space-x-6">
           <Link
             href="/"
