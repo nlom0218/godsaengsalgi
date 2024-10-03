@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   BookIcon,
   CircleDollarSignIcon,
@@ -7,18 +8,19 @@ import {
 } from 'lucide-react';
 import { ElementType } from 'react';
 
-export const LARGE_CATEGORIES = ['자산 관리', '자기 관리'] as const;
-export const MIDDLE_CATEGORIES = [
+const LARGE_CATEGORIES = ['자산 관리', '자기 관리'] as const;
+const MIDDLE_CATEGORIES = [
   '가계부',
   '고정 지출',
   '주식',
   '운동',
   '독서',
-];
+] as const;
 
 export const CATEGORY_STRUCTURE: Record<
-  (typeof LARGE_CATEGORIES)[number],
+  string,
   {
+    name: (typeof LARGE_CATEGORIES)[number];
     href: string;
     middleCategories: {
       name: (typeof MIDDLE_CATEGORIES)[number];
@@ -27,7 +29,8 @@ export const CATEGORY_STRUCTURE: Record<
     }[];
   }
 > = {
-  '자산 관리': {
+  finance: {
+    name: '자산 관리',
     href: '/finance',
     middleCategories: [
       {
@@ -47,7 +50,8 @@ export const CATEGORY_STRUCTURE: Record<
       },
     ],
   },
-  '자기 관리': {
+  'self-management': {
+    name: '자기 관리',
     href: '/self-management',
     middleCategories: [
       {

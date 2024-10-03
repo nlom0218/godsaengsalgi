@@ -9,7 +9,7 @@ import {
 } from '@/components/command';
 import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { CATEGORY_STRUCTURE, LARGE_CATEGORIES } from '@/contants/category';
+import { CATEGORY_STRUCTURE } from '@/constants/category';
 
 export function HeaderCommand() {
   const router = useRouter();
@@ -36,30 +36,28 @@ export function HeaderCommand() {
         <CommandInput placeholder="페이지를 검색하세요." />
         <CommandList>
           <CommandEmpty>검색된 페이지가 없습니다.</CommandEmpty>
-          {LARGE_CATEGORIES.map((largeCategory) => (
-            <Fragment key={largeCategory}>
-              <CommandGroup heading={largeCategory}>
-                {CATEGORY_STRUCTURE[largeCategory].middleCategories.map(
-                  ({ name, href, Icon }) => (
+          {Object.entries(CATEGORY_STRUCTURE).map(
+            ([largeCategory, { href: largeHref, name, middleCategories }]) => (
+              <Fragment key={largeCategory}>
+                <CommandGroup heading={name}>
+                  {middleCategories.map(({ name, href, Icon }) => (
                     <CommandItem
                       key={name}
                       className="cursor-pointer flex gap-2"
                       onSelect={() => {
-                        router.push(
-                          `${CATEGORY_STRUCTURE[largeCategory].href}${href}`
-                        );
+                        router.push(`${largeHref}${href}`);
                         setOpen(false);
                       }}
                     >
                       <Icon />
                       <span>{name}</span>
                     </CommandItem>
-                  )
-                )}
-              </CommandGroup>
-              <CommandSeparator />
-            </Fragment>
-          ))}
+                  ))}
+                </CommandGroup>
+                <CommandSeparator />
+              </Fragment>
+            )
+          )}
         </CommandList>
       </CommandDialog>
     </>

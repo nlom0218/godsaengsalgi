@@ -5,7 +5,7 @@ import * as React from 'react';
 import { HeaderCommand } from './header-command/header-command';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-import { CATEGORY_STRUCTURE } from '@/contants/category';
+import { CATEGORY_STRUCTURE } from '@/constants/category';
 
 export function Header() {
   const pathname = usePathname();
@@ -25,7 +25,7 @@ export function Header() {
             대시보드
           </Link>
           {Object.entries(CATEGORY_STRUCTURE).map(
-            ([largeCategory, { href }]) => (
+            ([largeCategory, { href, name }]) => (
               <Link
                 key={largeCategory}
                 href={href}
@@ -36,7 +36,7 @@ export function Header() {
                     : 'text-muted-foreground'
                 )}
               >
-                {largeCategory}
+                {name}
               </Link>
             )
           )}
