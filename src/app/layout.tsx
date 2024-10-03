@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
+import { Header } from '@/containers/global/header/header';
 
 const pretendard = localFont({
   src: './fonts/pretendard-variable.woff2',
@@ -8,6 +9,7 @@ const pretendard = localFont({
   weight: '45 920',
   variable: '--font-pretendard',
 });
+
 export const metadata: Metadata = {
   title: '갓생살기',
   description: '갓생을 살아보자',
@@ -20,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable}`}>{children}</body>
+      <body className={`${pretendard.variable}`}>
+        <Header />
+        <div className="flex-1 space-y-4 p-8 pt-6">{children}</div>
+      </body>
     </html>
   );
 }
