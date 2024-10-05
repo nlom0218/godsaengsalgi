@@ -6,7 +6,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandDialog,
-} from '@/components/command';
+} from '@/components/ui/command';
 import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { CATEGORY_STRUCTURE } from '@/constants/category';

@@ -1,7 +1,7 @@
 'use client';
 
-import { Tabs, TabsList, TabsTrigger } from '@/components/tabs';
-import { H1 } from '@/components/typography';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { H1 } from '@/components/ui/typography';
 import { CATEGORY_STRUCTURE } from '@/constants/category';
 import { usePathname, useRouter } from 'next/navigation';
 
